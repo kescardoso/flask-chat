@@ -10,7 +10,7 @@ messages = []
 def add_messages(username, message):
     """Add messages to the 'messages'list"""
     now = datetime.now().strftime("%H:%M:%S")
-    messages_dict={"timestamp": now, "from": username, "message": message}
+    messages_dict = {"timestamp": now, "from": username, "message": message}
     messages.append(messages_dict)
 
 
@@ -30,7 +30,7 @@ def index():
 @app.route('/<username>')
 def user(username):
     """Display chat messages"""
-    return "<h1>Welcome, {0}</h1>{1}".format(username, messages)
+    return render_template("chat.html", username=username, chat_messages=messages)
 
 
 @app.route('/<username>/<message>')
